@@ -185,29 +185,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 2px;
 }
 
-/* ---------- Image placeholder ---------- */
-.img-ph {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 24px;
-  text-align: center;
-  color: #9fb0bf;
-  background: #f1f5f7;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-}
-.img-ph strong {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.img-ph span { font-size: 11px; color: var(--muted); }
-
 /* ---------- Sections ---------- */
 .section { padding: 32px 0 40px; }
 .section--tight { padding: 16px 0 24px; }
@@ -332,7 +309,58 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(135deg, var(--teal), var(--blue));
   opacity: 0.18;
 }
-.hero__img { position: relative; min-height: 360px; border-radius: 24px; background: #f6f9fa; }
+.slider {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #dfe9ed;
+  box-shadow: 0 14px 32px rgba(15, 45, 74, 0.14);
+}
+.slider__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1s ease, transform 5s ease-out;
+}
+.slider__img.is-active { opacity: 1; transform: scale(1); }
+.slider__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 44px;
+  translate: -50% 0;
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 45, 74, 0.35);
+  backdrop-filter: blur(4px);
+}
+.slider__dots button {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: width 0.3s;
+}
+.slider__dots button.is-active { width: 34px; }
+.slider__dots button span {
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  transform-origin: left;
+  animation: progress linear forwards;
+}
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .hero__caption {
   position: absolute;
   left: 7.5%;
@@ -711,7 +739,6 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 860px) {
   .hero__inner,
   .consult__grid { grid-template-columns: 1fr; }
-  .hero__img { min-height: 260px; }
   .chip--tr { right: 8px; }
   .chip--ml { left: 8px; }
   .courses,

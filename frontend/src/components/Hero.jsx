@@ -1,4 +1,4 @@
-import ImagePlaceholder from './ImagePlaceholder.jsx';
+import HeroSlider from './HeroSlider.jsx';
 
 const CHIPS = [
   { label: 'Word', tone: 'blue', pos: 'tl' },
@@ -41,11 +41,7 @@ export default function Hero() {
 
         <div className="hero__media">
           <div className="hero__frame">
-            <ImagePlaceholder
-              title="Ảnh lớp / phòng máy"
-              note="Giữ nguyên ảnh thật, không thay bối cảnh"
-              className="hero__img"
-            />
+            <HeroSlider />
             {CHIPS.map((c, i) => (
               <span
                 key={c.label}
