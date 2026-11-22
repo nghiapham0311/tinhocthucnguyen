@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 export default function Logo() {
   return (
-    <a href="#top" className="logo" aria-label="Tin học Thức Nguyễn EDU – Trang chủ">
+    <Link to="/" className="logo" aria-label="Tin học Thức Nguyễn EDU – Trang chủ">
       <svg className="logo__mark" viewBox="0 0 64 64" aria-hidden="true">
         <rect x="4" y="4" width="56" height="42" rx="8" fill="#1a8fd0" />
         <rect x="26" y="48" width="12" height="6" fill="#0f2d4a" />
@@ -15,6 +17,6 @@ export default function Logo() {
           Thức Nguyễn <em>EDU</em>
         </strong>
       </span>
-    </a>
+    </Link>
   );
 }

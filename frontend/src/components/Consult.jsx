@@ -6,8 +6,8 @@ import { CONTACT, CONSULT_POINTS, COURSE_GROUPS } from '../data.js';
 
 const DOT_TONES = ['teal', 'blue', 'coral', 'yellow'];
 
-export default function Consult() {
-  const [form, setForm] = useState({ name: '', phone: '', course: '' });
+export default function Consult({ no = '03', defaultCourse = '' }) {
+  const [form, setForm] = useState({ name: '', phone: '', course: defaultCourse });
   const [sent, setSent] = useState(false);
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -17,14 +17,14 @@ export default function Consult() {
     // TODO: gửi tới backend khi API sẵn sàng (VD: POST /api/consultations)
     console.info('Yêu cầu tư vấn:', form);
     setSent(true);
-    setForm({ name: '', phone: '', course: '' });
+    setForm({ name: '', phone: '', course: defaultCourse });
   };
 
   return (
     <section className="section section--tint consult" id="lien-he">
       <div className="container">
         <SectionHeading
-          no="03"
+          no={no}
           title="Nhận tư vấn"
           sub="Cùng chọn khóa học phù hợp với trình độ và mục tiêu của bạn."
         />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
 import { CONTACT, NAV_LINKS } from '../data.js';
 
@@ -27,11 +28,17 @@ export default function Header() {
             <span />
           </button>
           <nav className={`nav ${open ? 'is-open' : ''}`}>
-            {NAV_LINKS.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-                {l.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((l) =>
+              l.href.startsWith('/') ? (
+                <Link key={l.href} to={l.href} onClick={() => setOpen(false)}>
+                  {l.label}
+                </Link>
+              ) : (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+                  {l.label}
+                </a>
+              )
+            )}
             <a href="#lien-he" className="btn btn--teal nav__cta" onClick={() => setOpen(false)}>
               Nhận tư vấn
             </a>

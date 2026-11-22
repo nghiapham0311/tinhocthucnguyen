@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SectionHeading from './SectionHeading.jsx';
 import Reveal from './Reveal.jsx';
 import Icon from './Icons.jsx';
@@ -7,15 +8,12 @@ export default function CourseGroups() {
   return (
     <section className="section" id="khoa-hoc">
       <div className="container">
-        <SectionHeading
-          no="02"
-          title="Bạn đang tìm khóa học nào?"
-          sub="Ba nhóm khóa học - ba lối vào rõ ràng ngay sau phần giới thiệu."
-        />
+        <SectionHeading no="02" title="Bạn đang tìm khóa học nào?" />
         <div className="courses">
           {COURSE_GROUPS.map((c, i) => (
             <Reveal
-              as="article"
+              as={Link}
+              to={`/khoa-hoc/${c.slug}`}
               key={c.id}
               delay={i * 120}
               className={`course-card course-card--${c.tone}`}
@@ -35,14 +33,13 @@ export default function CourseGroups() {
                   <li key={t}>{t}</li>
                 ))}
               </ul>
-              <a href={`#${c.id}`} className={`btn btn--${c.tone} btn--block`}>
+              <span className={`btn btn--${c.tone} btn--block`}>
                 {c.cta}
                 <Icon name="arrow" size={16} />
-              </a>
+              </span>
             </Reveal>
           ))}
         </div>
-        <p className="note">Mỗi ô dẫn đến trang chi tiết: nội dung học · đối tượng · lịch học · đăng ký.</p>
       </div>
     </section>
   );

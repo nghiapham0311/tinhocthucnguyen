@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// Tự động lấy mọi ảnh trong src/assets/hero (thêm ảnh mới chỉ cần chép vào thư mục).
-const modules = import.meta.glob('../assets/hero/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
-const SLIDES = Object.keys(modules)
-  .sort()
-  .map((path, i) => ({ src: modules[path], alt: `Lớp học Tin học Thức Nguyễn – ảnh ${i + 1}` }));
+import { CLASS_PHOTOS as SLIDES } from '../images.js';
 
 const INTERVAL = 4000;
 

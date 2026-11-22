@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import SectionHeading from './SectionHeading.jsx';
 import { SCHEDULE } from '../data.js';
 
@@ -23,7 +24,7 @@ export default function Schedule() {
             <tbody>
               {SCHEDULE.map((r) => (
                 <tr key={r.group}>
-                  <td data-label="Nhóm khóa học"><strong>{r.group}</strong></td>
+                  <td data-label="Nhóm khóa học"><Link to={`/khoa-hoc/${r.slug}`} className="schedule__course">{r.group}</Link></td>
                   <td data-label="Lịch học">{r.schedule}</td>
                   <td data-label="Học phí">{r.fee}</td>
                   <td data-label="Tư vấn"><a href="#lien-he">Nhận tư vấn</a></td>

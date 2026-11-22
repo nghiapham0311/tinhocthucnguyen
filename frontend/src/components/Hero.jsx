@@ -35,7 +35,6 @@ export default function Hero() {
           <div className="hero__modes">
             <span className="pill pill--teal">Học tại lớp</span>
             <span className="pill pill--blue">Học online</span>
-            <p>Nội dung thực hành gắn với từng nhóm học viên.</p>
           </div>
         </div>
 
