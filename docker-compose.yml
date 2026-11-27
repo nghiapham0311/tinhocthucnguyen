@@ -5,6 +5,8 @@ services:
     image: tinhocthucnguyen-frontend
     ports:
       - "8080:80"
+    volumes:
+      - drive-data:/usr/share/nginx/html/drive:ro
     restart: unless-stopped
     # depends_on:
     #   - backend
@@ -16,3 +18,17 @@ services:
   #   ports:
   #     - "8000:8000"
   #   restart: unless-stopped
+
+  # Đồng bộ danh sách ảnh Google Drive (5 phút/lần) → /drive/images.json trên web
+  drive-sync:
+    image: python:3.12-alpine
+    command: ["python3", "/app/sync.py", "/out/images.json", "--loop", "300"]
+    environment:
+      DRIVE_FOLDERS: "1BlTjnVZt2-7uHcA5cLoeSedW6dOsxShs,1-jZzAmp1P9kTM7sViLU_2REb8W0NmqWU"
+    volumes:
+      - ./drive-sync/sync.py:/app/sync.py:ro
+      - drive-data:/out
+    restart: unless-stopped
+
+volumes:
+  drive-data:

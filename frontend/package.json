@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "drive:sync": "DRIVE_FOLDERS=1BlTjnVZt2-7uHcA5cLoeSedW6dOsxShs,1-jZzAmp1P9kTM7sViLU_2REb8W0NmqWU python3 ../drive-sync/sync.py public/drive/images.json"
   },
   "dependencies": {
     "react": "^18.3.1",

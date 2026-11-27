@@ -109,6 +109,9 @@ a {
   line-height: 1.35;
   overflow: hidden;
 }
+.img-ph.is-loading {
+  background: #eef2f8;
+}
 .img-ph > span {
   display: flex;
   flex-direction: column;
