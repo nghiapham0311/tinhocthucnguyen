@@ -10,8 +10,13 @@ import { CONTACT, ROUTES } from '../data.js';
     pill      – menu dạng viên thuốc màu navy trên nền sáng (Khóa học, Văn phòng)
     pill-dark – menu viên thuốc trong suốt trên nền tối, logo trắng (Chứng chỉ)
     bar       – thanh trắng có viền dưới, nút navy (Thiếu nhi)
-  cta: { label, href } hoặc null. Không có cta ở variant pill → hiện nút Zalo + gọi điện.
+  cta: { label, href } hoặc null. Không có cta → hiện nút Zalo + gọi điện.
 */
+// href bắt đầu bằng "/" → chuyển trang bằng router, còn "#..." → neo trong trang.
+function NavLink({ href, ...rest }) {
+  return href.startsWith('/') ? <Link to={href} {...rest} /> : <a href={href} {...rest} />;
+}
+
 export default function SiteHeader({ variant = 'pill', cta = null, contactHref = '#dang-ky' }) {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
@@ -61,15 +66,15 @@ export default function SiteHeader({ variant = 'pill', cta = null, contactHref =
             )
           )}
           {cta && (
-            <a className="site-nav__cta-m" href={cta.href} onClick={close}>
+            <NavLink className="site-nav__cta-m" href={cta.href} onClick={close}>
               {cta.label}
-            </a>
+            </NavLink>
           )}
         </nav>
 
         {cta ? (
           variant === 'home' ? (
-            <a className="btn-roll site-hd__cta" href={cta.href}>
+            <NavLink className="btn-roll site-hd__cta" href={cta.href}>
               <span className="btn-roll__roll">
                 <span>
                   <span>{cta.label}</span>
@@ -79,11 +84,11 @@ export default function SiteHeader({ variant = 'pill', cta = null, contactHref =
               <span className="btn-roll__arr">
                 <Icon name="arrowRight" size={14} stroke={2.6} />
               </span>
-            </a>
+            </NavLink>
           ) : (
-            <a className="site-hd__cta site-hd__cta--solid" href={cta.href}>
+            <NavLink className="site-hd__cta site-hd__cta--solid" href={cta.href}>
               {cta.label}
-            </a>
+            </NavLink>
           )
         ) : (
           <div className="site-hd__icons">

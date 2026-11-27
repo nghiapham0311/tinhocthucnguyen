@@ -119,7 +119,7 @@ export default function CoursesPage() {
     <div className="pg-courses">
       <section className="hero" aria-label="Giới thiệu các khóa học">
         <div className="hero__band" aria-hidden="true" />
-        <SiteHeader variant="pill" contactHref="/#dang-ky" />
+        <SiteHeader variant="pill" cta={{ label: 'Đăng ký học', href: '/#dang-ky' }} contactHref="/#dang-ky" />
 
         <div className="wrap hero__grid">
           <div className="hero__txt">
